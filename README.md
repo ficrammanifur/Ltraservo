@@ -1,8 +1,16 @@
-# 🤖 Robohand – MQTT Servo Driver for ESP32
+<h1 align="center">🤖 Robohand – MQTT Servo Driver for ESP32</h1>
 
-[![Arduino](https://img.shields.io/badge/Arduino-Compatible-blue.svg)](https://www.arduino.cc/)
-[![ESP32](https://img.shields.io/badge/ESP32-Supported-green.svg)](https://www.espressif.com/en/products/socs/esp32)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<p align="center">
+  <a href="https://www.arduino.cc/">
+    <img src="https://img.shields.io/badge/Arduino-Compatible-blue.svg" alt="Arduino" />
+  </a>
+  <a href="https://www.espressif.com/en/products/socs/esp32">
+    <img src="https://img.shields.io/badge/ESP32-Supported-green.svg" alt="ESP32" />
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License" />
+  </a>
+</p>
 
 Robohand adalah library sederhana untuk ESP32 yang menghubungkan servo dengan MQTT untuk kontrol robotic hand. Library ini dirancang sebagai jembatan universal antara gesture tracking (Mediapipe di PC/Server) dan robotic hand berbasis ESP32.
 
@@ -322,7 +330,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## 👨‍💻 Author
 
 **Ficram Manifur Farissa**  
-Teknik Elektro - Universitas Cendekia Abditama
 
 - 📧 Email: ficramm@gmail.com
 - 🐙 GitHub: [ficrammanifur](https://github.com/ficrammanifur)
