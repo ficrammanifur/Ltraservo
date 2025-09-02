@@ -1,36 +1,37 @@
-#include "UltraServo.h"
+#ifndef ROBOHAND_H
+#define ROBOHAND_H
 
-UltraServo::UltraServo(int trig, int echo, int servo) {
-  trigPin = trig;
-  echoPin = echo;
-  servoPin = servo;
-}
+#include <Arduino.h>
+#include <Servo.h>
+#include <WiFi.h>
+#include <PubSubClient.h>
 
-void UltraServo::begin() {
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  myServo.attach(servoPin);
-}
+class RoboHand {
+  private:
+    Servo thumb, index, middle, ring, pinky;
+    int thumbPin, indexPin, middlePin, ringPin, pinkyPin;
 
-long UltraServo::readDistance() {
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
+    WiFiClient espClient;
+    PubSubClient mqttClient;
 
-  long duration = pulseIn(echoPin, HIGH);
-  long distance = duration * 0.034 / 2; // cm
-  return distance;
-}
+    String ssid, password, broker;
+    int port;
+    String topic;
 
-void UltraServo::moveServo(int angle) {
-  myServo.write(angle);
-}
+    static RoboHand* instance;  // pointer untuk callback MQTT
 
-void UltraServo::update() {
-  long d = readDistance();
-  int angle = map(d, 0, 100, 0, 180); // mapping jarak ke sudut servo
-  angle = constrain(angle, 0, 180);
-  moveServo(angle);
-}
+    static void mqttCallback(char* topic, byte* payload, unsigned int length);
+
+  public:
+    RoboHand(int t, int i, int m, int r, int p);
+
+    void begin();
+    void moveFinger(String finger, int angle);
+    void moveAll(int t, int i, int m, int r, int p);
+
+    void connectWiFi(const char* ssid, const char* password);
+    void connectMQTT(const char* broker, int port, const char* topic);
+    void loop();
+};
+
+#endif
