@@ -18,3 +18,14 @@ void loop() {
   myRobot.update(); // otomatis mapping jarak ke servo
 }
 # Ltraservo
+```
+
+## Wiring Diagram Example
+
+| Komponen         | ESP32 Pin |
+| ---------------- | --------- |
+| Ultrasonic Trig  | GPIO 5    |
+| Ultrasonic Echo  | GPIO 18   |
+| Servo Signal     | GPIO 19   |
+| VCC Sensor/Servo | 5V        |
+| GND              | GND       |
